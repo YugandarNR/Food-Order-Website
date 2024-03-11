@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{ url_for('static',filename='styles.css')}}">
+  <title>User Home</title>
+</head>
+
+<body>
+  <header>
+    <h1>Food Delivery Website</h1>
+    <div>
+      <form method="POST">
+        <div style="height : 10%; width: 10%; float:right;">
+          <input type="submit" name=action value="logout">
+        </div>
+        <div style="height : 10%; width: 10%; float:right;">
+          <input type="submit" name="action" value="View Orders">
+      </div>
+      </form>
+    </div>
+  </header>
+  </form>
+  </header>
+  <h2>Welcome! {{profile}}</h2>
+  <main>
+    {%for restaurant in restaurants%}
+    <div class="item">
+      <form method="POST">
+        <div class="form-row">
+          <input type="hidden" id="RestId" name="RestId" value={{restaurant[0]}}>
+        </div>
+        <h2>{{restaurant[1]}}</h2>
+        <div class="form-row">
+          <input type="hidden" id="RestName" name="RestName" value="{{restaurant[1]}}">
+        </div>
+        <p><strong>Phone: </strong>{{restaurant[2]}}</p>
+        <p><strong>Address: </strong>{{restaurant[3]}},{{restaurant[4]}},{{restaurant[5]}},{{restaurant[6]}}</p>
+        <p><strong>Delivery Fee: </strong>$ {{restaurant[9]}}</p>
+        <input type="submit" name="action" value="Order">
+      </form>
+    </div>
+    {% endfor %}
+  </main>
+</body>
+
+</html>
